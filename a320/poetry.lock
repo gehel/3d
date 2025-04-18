@@ -1,0 +1,27 @@
+[[package]]
+name = "kicad-skip"
+version = "0.2.5"
+description = "A friendly way to skip the drudgery and manipulate kicad 7+ s-expression schematic, netlist and PCB files"
+category = "main"
+optional = false
+python-versions = ">=3.8"
+
+[package.dependencies]
+sexpdata = ">=0.0.3"
+
+[[package]]
+name = "sexpdata"
+version = "1.0.2"
+description = "S-expression parser for Python"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[metadata]
+lock-version = "1.1"
+python-versions = "^3.13"
+content-hash = "acdd75180340f2052ae4b7f0f8efab255ca89118bef468c9a50465a60f550ef3"
+
+[metadata.files]
+kicad-skip = []
+sexpdata = []
