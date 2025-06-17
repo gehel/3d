@@ -1,5 +1,4 @@
-from panel.commons import Line, KorrySwitch, FlipSwitch, Potentiometer, Label, main_panel, header
-
+from panel.commons import Line, KorrySwitch, FlipSwitch, Potentiometer, Label, write_scad
 
 panel_x = 310
 panel_y = 130
@@ -64,10 +63,4 @@ components = [
 ]
 
 if __name__ == '__main__':
-    with open('target/out.scad', 'w') as f:
-        f.write(header)
-        f.write(main_panel(panel_x, panel_y, components))
-
-        f.write('\n')
-
-        f.write('\n'.join([c.outline() for c in components if c.outline()]))
+    write_scad('target/out.scad', components, panel_x, panel_y)

@@ -1,4 +1,4 @@
-from abc import ABC
+from abc import ABC, abstractmethod
 from typing import Sequence
 
 
@@ -35,6 +35,7 @@ class PositionedComponent(Component):
     def _translate(self) -> str:
         return f'translate([{self.x}, {self.y}])'
 
+    @abstractmethod
     def _hole(self) -> str:
         pass
 
@@ -45,6 +46,7 @@ class PositionedComponent(Component):
         else:
             return ''
 
+    @abstractmethod
     def _outline(self) -> str:
         pass
 
@@ -170,3 +172,13 @@ def main_panel(x: int, y: int, components: Sequence[Component]) -> str:
         '\n'.join([c.hole() for c in components if c.hole()]),
         '}'
     ])
+
+
+def write_scad(filename, components, panel_x, panel_y):
+    with open(filename, 'w') as f:
+        f.write(header)
+        f.write(main_panel(panel_x, panel_y, components))
+
+        f.write('\n')
+
+        f.write('\n'.join([c.outline() for c in components if c.outline()]))
