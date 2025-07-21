@@ -8,6 +8,7 @@ license = "Apache-2.0"
 [tool.poetry.dependencies]
 python = "^3.10"
 kicad-skip = "^0.2.5"
+pathlib = "^1.0.1"
 
 [tool.poetry.dev-dependencies]
 

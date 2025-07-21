@@ -1,3 +1,5 @@
+from pathlib import Path
+
 from panel.commons import Line, KorrySwitch, FlipSwitch, Potentiometer, Label, write_scad
 
 panel_x = 310
@@ -63,4 +65,5 @@ components = [
 ]
 
 if __name__ == '__main__':
-    write_scad('target/out.scad', components, panel_x, panel_y)
+    scad_file = Path('target/out.scad')
+    write_scad(scad_file, components, panel_x, panel_y)

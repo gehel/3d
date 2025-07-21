@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+from pathlib import Path
 from typing import Sequence
 
 
@@ -75,7 +76,7 @@ class KorrySwitch(PositionedComponent):
         if self.text_right_direction:
             args.append(f'text_right_direction="{self.text_right_direction}"')
 
-        return f'korry_outline({', '.join(args)})'
+        return f'korry_outline({", ".join(args)})'
 
     def _hole(self) -> str:
         return 'korry_hole()'
@@ -110,7 +111,7 @@ class FlipSwitch(PositionedComponent):
         if self.text_right_direction:
             args.append(f'text_right_direction="{self.text_right_direction}"')
 
-        return  f'switch_outline({', '.join(args)})'
+        return  f'switch_outline({", ".join(args)})'
 
     def _hole(self) -> str:
         return 'switch_hole()'
@@ -135,7 +136,7 @@ class Potentiometer(PositionedComponent):
             args.append(f'text_bottom_left="{self.text_bottom_left}"')
         if self.text_bottom_right:
             args.append(f'text_bottom_right="{self.text_bottom_right}"')
-        return  f'pot_outline({', '.join(args)})'
+        return  f'pot_outline({", ".join(args)})'
 
     def _hole(self) -> str:
         return 'pot_hole()'
@@ -154,7 +155,7 @@ class Label(PositionedComponent):
             args.append(f'text="{self.text}"')
         if self.size:
             args.append(f'size={self.size}')
-        return  f'label({', '.join(args)})'
+        return  f'label({", ".join(args)})'
 
     def _hole(self) -> str:
         return ''
@@ -174,8 +175,11 @@ def main_panel(x: int, y: int, components: Sequence[Component]) -> str:
     ])
 
 
-def write_scad(filename, components, panel_x, panel_y):
-    with open(filename, 'w') as f:
+def write_scad(file: Path, components: Sequence[Component], panel_x: int, panel_y: int):
+    if not file.parent.exists():
+        file.parent.mkdir()
+
+    with file.open('w') as f:
         f.write(header)
         f.write(main_panel(panel_x, panel_y, components))
 
