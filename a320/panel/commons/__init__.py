@@ -11,6 +11,9 @@ $fn=100;
 
 class Component(ABC):
 
+    def __init__(self, id: str):
+        self.id = id
+
     def hole(self) -> str:
         return ''
 
@@ -20,7 +23,8 @@ class Component(ABC):
 
 class Line(Component):
 
-    def __init__(self, start:tuple[int, int], end:tuple[int, int]):
+    def __init__(self, id: str, start:tuple[int, int], end:tuple[int, int]):
+        super().__init__(id)
         self.start = start
         self.end = end
 
@@ -29,7 +33,8 @@ class Line(Component):
 
 
 class PositionedComponent(Component):
-    def __init__(self, x: int, y: int) -> None:
+    def __init__(self, id: str, x: int, y: int) -> None:
+        super().__init__(id)
         self.x = x
         self.y = y
 
@@ -61,8 +66,8 @@ class PositionedComponent(Component):
 
 class KorrySwitch(PositionedComponent):
 
-    def __init__(self, x: int, y: int, text:str=None, text_right:str=None, text_right_direction:str=None) -> None:
-        super().__init__(x, y)
+    def __init__(self, id: str, x: int, y: int, text:str=None, text_right:str=None, text_right_direction:str=None) -> None:
+        super().__init__(id, x, y)
         self.text = text
         self.text_right = text_right
         self.text_right_direction = text_right_direction
@@ -84,8 +89,8 @@ class KorrySwitch(PositionedComponent):
 
 class FlipSwitch(PositionedComponent):
 
-    def __init__(self, x: int, y: int, text_top_1:str=None, text_top_2:str=None, text_right_up:str=None, text_right:str=None, text_right_down:str=None, text_bottom:str=None, text_right_direction:str=None) -> None:
-        super().__init__(x, y)
+    def __init__(self, id: str, x: int, y: int, text_top_1:str=None, text_top_2:str=None, text_right_up:str=None, text_right:str=None, text_right_down:str=None, text_bottom:str=None, text_right_direction:str=None) -> None:
+        super().__init__(id, x, y)
         self.text_top_1 = text_top_1
         self.text_top_2 = text_top_2
         self.text_right_up = text_right_up
@@ -119,8 +124,8 @@ class FlipSwitch(PositionedComponent):
 
 class Potentiometer(PositionedComponent):
 
-    def __init__(self, x: int, y: int, text_top_1:str=None, text_top_2:str=None, text_bottom_left:str=None, text_bottom_right:str=None) -> None:
-        super().__init__(x, y)
+    def __init__(self, id: str, x: int, y: int, text_top_1:str=None, text_top_2:str=None, text_bottom_left:str=None, text_bottom_right:str=None) -> None:
+        super().__init__(id, x, y)
         self.text_top_1 = text_top_1
         self.text_top_2 = text_top_2
         self.text_bottom_left = text_bottom_left
@@ -144,8 +149,8 @@ class Potentiometer(PositionedComponent):
 
 class Label(PositionedComponent):
 
-    def __init__(self, x: int, y: int, text:str=None, size:float=None,) -> None:
-        super().__init__(x, y)
+    def __init__(self, id: str, x: int, y: int, text:str=None, size:float=None,) -> None:
+        super().__init__(id, x, y)
         self.text = text
         self.size = size
 
