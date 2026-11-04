@@ -4,3 +4,10 @@
 .xdp*
 
 *.FCBak
+
+# exports, merge leftovers, local tool config
+*.step
+*.orig
+.idea/
+*.iml
+.claude/
