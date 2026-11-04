@@ -1,0 +1,3 @@
+[submodule "weights_box/Chamfers-for-OpenSCAD"]
+	path = weights_box/Chamfers-for-OpenSCAD
+	url = https://github.com/SebiTimeWaster/Chamfers-for-OpenSCAD.git
