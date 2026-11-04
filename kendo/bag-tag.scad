@@ -8,7 +8,7 @@ $fn = 64;
 /* [Plate] */
 plate_w = 67;
 plate_h = 45;
-plate_t = 1;
+plate_t = 1.2;
 corner_r = 5;
 
 /* [Text] */
